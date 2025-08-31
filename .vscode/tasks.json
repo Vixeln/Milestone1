@@ -1,0 +1,65 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile Release",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                ".",
+                "-B",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new",
+                "focus": false,
+                "clear": true
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "detail": "Runs Cmake Build in Release"
+        },
+        {
+          "label": "Compile Release Makefile",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new",
+                "focus": false,
+                "clear": true
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "detail": "Runs Cmake Build in Release"
+        },
+        {
+          "label": "Compile Release Sequence",
+          "dependsOrder": "sequence",
+          "dependsOn": [
+            "Compile Release",
+            "Compile Release Makefile"
+          ]
+        },
+        {
+      "label": "echo",
+      "type": "shell",
+      "command": "echo ${workspaceFolder}"
+    }
+    ]
+}
