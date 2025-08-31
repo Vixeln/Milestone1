@@ -7,7 +7,7 @@
             "request": "launch",
             "preLaunchTask": "Compile Release Sequence", // this is referencing to the tasks.json name "
             "cwd": "${cwd}",
-            "program": "${cwd}/build/Test", // The 'Test' program/executable name comes from the CMakeLists.txt
+            "program": "${cwd}/build/milestone1", // The 'Test' program/executable name comes from the CMakeLists.txt
             "MIMode": "lldb"
         },
     ],
