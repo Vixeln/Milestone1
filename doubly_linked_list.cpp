@@ -32,7 +32,14 @@ DoublyLinkedList::~DoublyLinkedList() {
 bool DoublyLinkedList::isEmpty() {
   return (this->head == nullptr);
 }; ///< Checks if the list is empty.
-void DoublyLinkedList::insertAtHead(int key) {};   ///< Inserts a node at the head.
+
+void DoublyLinkedList::insertAtHead(int key) {
+  DllNode *node = new DllNode(key);
+  node->next = this->head;
+  if (this->head != nullptr)
+    this->head->prev = node;
+  this->head = node;
+}; ///< Inserts a node at the head.
 void DoublyLinkedList::insertAtTail(int key) {};   ///< Inserts a node at the tail.
 void DoublyLinkedList::remove(int key) {};         ///< Removes a node with a specific key.
 void DoublyLinkedList::removeHeaderNode() {};      ///< Removes the head node.
