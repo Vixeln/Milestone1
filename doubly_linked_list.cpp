@@ -29,6 +29,10 @@ DoublyLinkedList::~DoublyLinkedList() {
 
 }; ///< Destructor: Deletes all nodes.
 
+// I'm personally not a fan of having to initialize stuff, but I'm just doing it
+// for now
+static void initializeFirstNode() {}
+
 bool DoublyLinkedList::isEmpty() {
   return (this->head == nullptr);
 }; ///< Checks if the list is empty.
