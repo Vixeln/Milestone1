@@ -38,21 +38,21 @@ bool DoublyLinkedList::isEmpty() {
 }; ///< Checks if the list is empty.
 
 void DoublyLinkedList::insertAtHead(int key) {
-  DllNode *node = new DllNode(key);
-  node->next = this->head;
+  DllNode *newHead = new DllNode(key);
+  newHead->next = this->head;
   if (this->head != nullptr)
-    this->head->prev = node;
-  this->head = node;
+    this->head->prev = newHead;
+  this->head = newHead;
 }; ///< Inserts a node at the head.
 
 void DoublyLinkedList::insertAtTail(int key) {
-  DllNode *node = new DllNode(key);
-  node->prev = this->tail;
+  DllNode *newTail = new DllNode(key);
+  newTail->prev = this->tail;
   if (this->tail != nullptr)
-    this->tail->next = node;
+    this->tail->next = newTail;
   else
     ;
-  this->tail = node;
+  this->tail = newTail;
 }; ///< Inserts a node at the tail.
 
 void DoublyLinkedList::remove(int key) {};         ///< Removes a node with a specific key.
