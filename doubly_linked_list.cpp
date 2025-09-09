@@ -50,4 +50,16 @@ void DoublyLinkedList::printList() {
 
   std::cout << "End of List" << std::endl;
 }; ///< Prints the list from head to tail.
-void DoublyLinkedList::reversePrintList(){};      ///< Prints the list from tail to head.
+
+void DoublyLinkedList::reversePrintList() {
+  DllNode *currentNode = this->tail;
+
+  std::cout << "Here are the List contents: " << std::endl;
+  while (currentNode != nullptr) {
+    std::cout << "Node key: " << currentNode->key << std::endl;
+    currentNode = currentNode->prev;
+  };
+  // Pointers should hopefully end up as null pointers after loop
+
+  std::cout << "End of List" << std::endl;
+}; ///< Prints the list from tail to head.
