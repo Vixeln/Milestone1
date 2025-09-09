@@ -38,5 +38,16 @@ void DoublyLinkedList::removeTailNode() {};        ///< Removes the tail node.
 void DoublyLinkedList::moveNodeToHead(int key){}; ///< Moves a node to the head.
 void DoublyLinkedList::moveNodeToTail(int key){}; ///< Moves a node to the tail.
 void DoublyLinkedList::clear(){};                 ///< Deletes all nodes.
-void DoublyLinkedList::printList(){};             ///< Prints the list from head to tail.
+void DoublyLinkedList::printList() {
+  DllNode *currentNode = this->head;
+
+  std::cout << "Here are the List contents: " << std::endl;
+  while (currentNode != nullptr) {
+    std::cout << "Node key: " << currentNode->key << std::endl;
+    currentNode = currentNode->next;
+  };
+  // Pointers should hopefully end up as null pointers after loop
+
+  std::cout << "End of List" << std::endl;
+}; ///< Prints the list from head to tail.
 void DoublyLinkedList::reversePrintList(){};      ///< Prints the list from tail to head.
