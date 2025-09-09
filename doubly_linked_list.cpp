@@ -52,7 +52,17 @@ void DoublyLinkedList::insertAtTail(int key) {
 }; ///< Inserts a node at the tail.
 
 void DoublyLinkedList::remove(int key) {};         ///< Removes a node with a specific key.
-void DoublyLinkedList::removeHeaderNode() {};      ///< Removes the head node.
+
+void DoublyLinkedList::removeHeaderNode() {
+  DllNode *currentHead = this->head;
+  DllNode *newHead = currentHead->next;
+  currentHead->next = nullptr;
+  newHead->prev = nullptr;
+  delete currentHead;
+
+  this->head = newHead;
+}; ///< Removes the head node.
+
 void DoublyLinkedList::removeTailNode() {};        ///< Removes the tail node.
 void DoublyLinkedList::moveNodeToHead(int key){}; ///< Moves a node to the head.
 void DoublyLinkedList::moveNodeToTail(int key){}; ///< Moves a node to the tail.
