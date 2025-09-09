@@ -29,7 +29,9 @@ DoublyLinkedList::~DoublyLinkedList() {
 
 }; ///< Destructor: Deletes all nodes.
 
-bool DoublyLinkedList::isEmpty() {return false;};               ///< Checks if the list is empty.
+bool DoublyLinkedList::isEmpty() {
+  return (this->head == nullptr);
+}; ///< Checks if the list is empty.
 void DoublyLinkedList::insertAtHead(int key) {};   ///< Inserts a node at the head.
 void DoublyLinkedList::insertAtTail(int key) {};   ///< Inserts a node at the tail.
 void DoublyLinkedList::remove(int key) {};         ///< Removes a node with a specific key.
