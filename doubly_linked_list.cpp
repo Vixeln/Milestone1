@@ -14,7 +14,7 @@
  * @date 09/09/2025 - Added implementations and file heading
  * @author Vireak Ny
  */
-//TODO: ask Baxter why there are 2 blocks of comments on file heading
+// TODO: ask Baxter why there are 2 blocks of comments on file heading
 #include "doubly_linked_list.h"
 #include "dll_node.h"
 #include "json.hpp"
