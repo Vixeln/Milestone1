@@ -63,7 +63,16 @@ void DoublyLinkedList::removeHeaderNode() {
   this->head = newHead;
 }; ///< Removes the head node.
 
-void DoublyLinkedList::removeTailNode() {};        ///< Removes the tail node.
+void DoublyLinkedList::removeTailNode() {
+  DllNode *currentTail = this->tail;
+  DllNode *newTail = currentTail->prev;
+  currentTail->prev = nullptr;
+  newTail->next = nullptr;
+  delete currentTail;
+
+  this->tail = newTail;
+
+}; ///< Removes the tail node.
 void DoublyLinkedList::moveNodeToHead(int key){}; ///< Moves a node to the head.
 void DoublyLinkedList::moveNodeToTail(int key){}; ///< Moves a node to the tail.
 void DoublyLinkedList::clear(){};                 ///< Deletes all nodes.
