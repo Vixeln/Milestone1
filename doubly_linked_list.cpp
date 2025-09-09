@@ -1,3 +1,20 @@
+/**
+ * @author - Vireak Ny
+ * @file doubly_linked_list.cpp -  This file implements the functions in doubly_linked_list.h
+ *
+ */
+
+/**
+ * @file doubly_linked_list.cpp
+ * @brief This file implements the functions in doubly_linked_list.h
+ *
+ * This file defines a basic doubly linked list and common operations like
+ * insertion, deletion, and movement of nodes.
+ *
+ * @date 09/09/2025 - Added implementations and file heading
+ * @author Vireak Ny
+ */
+//TODO: ask Baxter why there are 2 blocks of comments on file heading
 #include "doubly_linked_list.h"
 #include "json.hpp"
 
