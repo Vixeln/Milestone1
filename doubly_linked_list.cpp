@@ -19,7 +19,8 @@
 #include "json.hpp"
 
 DoublyLinkedList::DoublyLinkedList() {
-
+  this->tail = nullptr;
+  this->head = nullptr;
 } ///< Constructor: Initializes an empty list.
 DoublyLinkedList::~DoublyLinkedList() {
 
