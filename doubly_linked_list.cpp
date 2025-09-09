@@ -73,7 +73,13 @@ void DoublyLinkedList::removeTailNode() {
   this->tail = newTail;
 
 }; ///< Removes the tail node.
-void DoublyLinkedList::moveNodeToHead(int key){}; ///< Moves a node to the head.
+
+void DoublyLinkedList::moveNodeToHead(int key) {
+  // Why are we taking in a key? does that mean we have to search for the node
+  // with the key and then find that node?
+  // what if there are duplicate nodes?
+
+}; ///< Moves a node to the head.
 void DoublyLinkedList::moveNodeToTail(int key){}; ///< Moves a node to the tail.
 void DoublyLinkedList::clear(){};                 ///< Deletes all nodes.
 void DoublyLinkedList::printList() {
