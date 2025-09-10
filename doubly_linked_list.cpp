@@ -17,11 +17,10 @@
  * @author Vireak Ny
  */
 // TODO: ask Baxter why there are 2 blocks of comments on file heading
-#include "doubly_linked_list.h"
-#include "dll_node.h"
-#include "json.hpp"
 #include <iostream>
 #include <ostream>
+#include "dll_node.h"
+#include "doubly_linked_list.h"
 
 extern void logToFileAndConsole(std::string msg);
 
