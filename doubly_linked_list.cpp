@@ -181,6 +181,49 @@ void DoublyLinkedList::moveNodeToHead(int key) {
 
 }; ///< Moves a node to the head.
 void DoublyLinkedList::moveNodeToTail(int key) {
+  // My approach is very similar the implementation of moveNodeToHead(int), just
+  // with different nodes
+  DllNode *targetNode = findNode(key, this);
+
+  if (targetNode != nullptr) { // Potential circular list issue
+    /*Do nothing because it is already the head*/
+    if (targetNode == this->tail) {
+    } else {
+      // Clean up connections in target node's oriignal location
+      // The following code is similar to remove() but doesn't delete the
+      // object. Will come up with better function set up later.
+      DllNode *prevNode, *nextNode;
+
+      prevNode = targetNode->prev;
+      nextNode = targetNode->next;
+
+      nextNode->prev = prevNode;
+      if (prevNode != nullptr)
+        // If condiiton is just patch up code, will
+        // find better solution later.
+        prevNode->next = nextNode;
+      if (targetNode == this->head)
+        this->head = nextNode;
+
+      // Set up connections for target node as new head
+      DllNode *oldTail = this->tail;
+      DllNode *newTail = targetNode; // Could be problematic if list is empty
+
+      oldTail->next = newTail;
+      newTail->next = nullptr;
+      newTail->prev = oldTail;
+
+      // Update head pointer to new node
+      this->tail = newTail;
+    }
+  } else {
+    std::cout << "Could not move node because it could not be found" << std::endl;
+  }
+
+  // Why are we taking in a key? does that mean we have to search for the node
+  // with the key and then find that node?
+  // what if there are duplicate nodes?
+
 }; ///< Moves a node to the tail.
 void DoublyLinkedList::clear() {
   DllNode *currentNode = this->head;
