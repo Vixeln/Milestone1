@@ -67,6 +67,8 @@ static DllNode *softRemove(DllNode *targetNode) {
 
   prevNode->next = nextNode;
   nextNode->prev = prevNode;
+
+  return targetNode;
 };
 
 bool DoublyLinkedList::isEmpty() {
