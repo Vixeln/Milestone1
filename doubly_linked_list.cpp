@@ -59,13 +59,20 @@ newHead = new DllNode(key);
 }; ///< Inserts a node at the head.
 
 void DoublyLinkedList::insertAtTail(int key) {
-  DllNode *newTail = new DllNode(key);
-  newTail->prev = this->tail;
-  if (this->tail != nullptr)
-    this->tail->next = newTail;
-  else
-    ;
+  DllNode *newTail, *oldTail;
+
+newTail = new DllNode(key);
+  oldTail = this->tail;
+
+  if (!this->isEmpty()) {
+    // Connect old and new nodes
+    oldTail->next = newTail;
+    newTail->prev = oldTail;
+
+    // Update head. Must do this->tail, do not use oldTail.
   this->tail = newTail;
+} else
+    initializeFirstNode(newTail, this);
 }; ///< Inserts a node at the tail.
 
 void DoublyLinkedList::remove(int key) {};         ///< Removes a node with a specific key.
