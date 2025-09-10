@@ -13,7 +13,7 @@
  * insertion, removal, movement of nodes, and printing.
  *
  * @date 09/09/2025 - Added file heading and empty implementations so that the progrma compiles
- * @date 09/09/2025 - Added implementations and file heading
+ * @date 09/09/2025 - Added function implementations 
  * @author Vireak Ny
  */
 // TODO: ask Baxter why there are 2 blocks of comments on file heading
