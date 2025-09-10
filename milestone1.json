@@ -1,6 +1,95 @@
 {
     "DoublyLinkedList": [
       {
+        "testCase0": [
+          {
+            "insertAtHead": 40
+          },
+          {
+            "insertAtHead": 30
+          },
+          {
+            "insertAtTail": 60
+          },
+          {
+            "insertAtTail": 70
+          },
+          {
+            "insertAtHead": 10
+          },
+          {
+            "insertAtTail": 100
+          },
+          {
+            "isEmpty": {}
+          },
+          {
+            "printList": {}
+          },
+          {
+            "remove": 50
+          },
+          {
+            "printList": {}
+          },
+          {
+            "remove": 60
+          },
+          {
+            "printList": {}
+          },
+          {
+            "moveNodeToHead": 60
+          },
+          {
+            "printList": {}
+          },
+          {
+            "moveNodeToHead": 40
+          },
+          {
+            "printList": {}
+          },
+          {
+            "moveNodeToHead": 40
+          },
+          {
+            "printList": {}
+          },
+          {
+            "moveNodeToHead": 100
+          },
+          {
+            "printList": {}
+          },
+          {
+            "moveNodeToTail": 50
+          },
+          {
+            "printList": {}
+          },
+          {
+            "moveNodeToTail": 30
+          },
+          {
+            "printList": {}
+          },
+          {
+            "moveNodeToTail": 30
+          },
+          {
+            "printList": {}
+          },
+          {
+            "moveNodeToTail": 70
+          },
+          {
+            "printList": {}
+          },
+          {
+            "reversePrintList": {}
+          }
+        ],
         "testCase1": [
           {
             "isEmpty": {}
