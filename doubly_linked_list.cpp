@@ -12,6 +12,9 @@
  * This file defines a basic doubly linked list and common operations like
  * insertion, removal, movement of nodes, and printing.
  *
+ * For GitHub Repository
+ * @see https://github.com/Vixeln/Milestone1
+ *
  * @date 09/09/2025 - Added file heading and empty implementations so that the
  * progrma compiles
  * @date 09/09/2025 - Added function implementations
