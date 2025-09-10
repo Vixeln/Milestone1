@@ -36,6 +36,19 @@ static void initializeFirstNode(DllNode *firstNode, DoublyLinkedList *list) {
   list->tail = firstNode;
 }
 
+static DllNode *findNode(int key, DoublyLinkedList *list) {
+  DllNode *currentNode = list->head;
+
+  while (currentNode != nullptr) {
+    if (currentNode->key == key)
+      break;
+
+    currentNode = currentNode->next;
+  }
+
+  return currentNode;
+}
+
 bool DoublyLinkedList::isEmpty() {
   return (this->head == nullptr);
 }; ///< Checks if the list is empty.
