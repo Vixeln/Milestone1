@@ -39,11 +39,25 @@ DoublyLinkedList::~DoublyLinkedList() {
 
 // I'm personally not a fan of having to initialize stuff, but I'm just doing it
 // for now
+/**
+ * @brief Helper function for making the first node in an empty list
+ *
+ * @param firstNode
+ * @param list
+ */
 static void initializeFirstNode(DllNode *firstNode, DoublyLinkedList *list) {
   list->head = firstNode;
   list->tail = firstNode;
 }
 
+/**
+ * @brief Helper function to find the first node with the provided key
+ *
+ * @details This function is used for moving or removing nodes
+ * @param key
+ * @param list
+ * @return DllNode*
+ */
 static DllNode *findNode(int key, DoublyLinkedList *list) {
   DllNode *currentNode = list->head;
 
@@ -57,8 +71,15 @@ static DllNode *findNode(int key, DoublyLinkedList *list) {
   return currentNode;
 }
 
-// This is a helper function to deal with removing connections from a node.
-// WARNING: It does NOT delete the node
+/**
+ * @brief Helper function that removes a node from the link and patching up the
+ * pointer connections.
+ *
+ * @warning It does NOT delete the node. Make sure to properly delete the
+ * returned node.
+ * @param targetNode
+ * @return DllNode*
+ */
 static DllNode *softRemove(DllNode *targetNode) {
   DllNode *prevNode, *nextNode;
 
@@ -71,10 +92,21 @@ static DllNode *softRemove(DllNode *targetNode) {
   return targetNode;
 };
 
+/**
+ * @brief Returns whether the list is empty or not
+ *
+ * @return true
+ * @return false
+ */
 bool DoublyLinkedList::isEmpty() {
   return (this->head == nullptr);
 }; ///< Checks if the list is empty.
 
+/**
+ * @brief Insert a new node with the provided key at the head of the list
+ *
+ * @param key
+ */
 void DoublyLinkedList::insertAtHead(int key) {
   // TODO Potentially some memory leaks or dangling pointers
   DllNode *newHead, *oldHead;
@@ -93,6 +125,11 @@ void DoublyLinkedList::insertAtHead(int key) {
     initializeFirstNode(newHead, this);
 }; ///< Inserts a node at the head.
 
+/**
+ * @brief Insert a new node with the provided key at the tail of the list
+ *
+ * @param key
+ */
 void DoublyLinkedList::insertAtTail(int key) {
   DllNode *newTail, *oldTail;
 
@@ -110,6 +147,11 @@ void DoublyLinkedList::insertAtTail(int key) {
     initializeFirstNode(newTail, this);
 }; ///< Inserts a node at the tail.
 
+/**
+ * @brief Remove the first node from the head with the provided key.
+ *
+ * @param key
+ */
 void DoublyLinkedList::remove(int key) {
   DllNode *targetNode = findNode(key, this);
 
@@ -130,6 +172,10 @@ void DoublyLinkedList::remove(int key) {
   }
 }; ///< Removes a node with a specific key.
 
+/**
+ * @brief Remove the node at the head of the list
+ *
+ */
 void DoublyLinkedList::removeHeaderNode() {
   DllNode *currentHead = this->head;
   DllNode *newHead = currentHead->next; // Problematic if list is empty
@@ -142,6 +188,10 @@ void DoublyLinkedList::removeHeaderNode() {
   this->head = newHead;
 }; ///< Removes the head node.
 
+/**
+ * @brief Remove the node at the tail of the list
+ *
+ */
 void DoublyLinkedList::removeTailNode() {
   DllNode *currentTail = this->tail;
   DllNode *newTail = currentTail->prev;
@@ -155,6 +205,12 @@ void DoublyLinkedList::removeTailNode() {
 
 }; ///< Removes the tail node.
 
+/**
+ * @brief Move the first node with the provided key to the head of the list. It
+ * finds the first node from the head of the list
+ *
+ * @param key
+ */
 void DoublyLinkedList::moveNodeToHead(int key) {
   // My approach involves changing the connections of the target node instead of
   // copying and deleting the target node. This is so that the node can still be
@@ -202,6 +258,13 @@ void DoublyLinkedList::moveNodeToHead(int key) {
   // what if there are duplicate nodes?
 
 }; ///< Moves a node to the head.
+
+/**
+ * @brief Move the first node with the provided key to the tail of the list. It
+ * finds the first node from the head of the list
+ *
+ * @param key
+ */
 void DoublyLinkedList::moveNodeToTail(int key) {
   // My approach is very similar the implementation of moveNodeToHead(int), just
   // with different nodes
@@ -249,6 +312,10 @@ void DoublyLinkedList::moveNodeToTail(int key) {
 
 }; ///< Moves a node to the tail.
 
+/**
+ * @brief Remove all elements from the list
+ *
+ */
 void DoublyLinkedList::clear() {
   DllNode *currentNode = this->head;
   DllNode *nextNode;
@@ -263,6 +330,11 @@ void DoublyLinkedList::clear() {
   this->tail = nullptr;
 }; ///< Deletes all nodes.
 
+/**
+ * @brief Print the the contents of the list from the head to the tail of the
+ * list. The direction is the reverse of reversePrintList()
+ *
+ */
 void DoublyLinkedList::printList() {
   DllNode *currentNode = this->head;
 
@@ -277,6 +349,11 @@ void DoublyLinkedList::printList() {
   logToFileAndConsole("End of List");
 }; ///< Prints the list from head to tail.
 
+/**
+ * @brief Print the the contents of the list from the tail to the head of the
+ * list. The direction is the reverse of printNode()
+ *
+ */
 void DoublyLinkedList::reversePrintList() {
   DllNode *currentNode = this->tail;
 
