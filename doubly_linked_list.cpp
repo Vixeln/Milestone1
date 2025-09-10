@@ -12,15 +12,16 @@
  * This file defines a basic doubly linked list and common operations like
  * insertion, removal, movement of nodes, and printing.
  *
- * @date 09/09/2025 - Added file heading and empty implementations so that the progrma compiles
- * @date 09/09/2025 - Added function implementations 
+ * @date 09/09/2025 - Added file heading and empty implementations so that the
+ * progrma compiles
+ * @date 09/09/2025 - Added function implementations
  * @author Vireak Ny
  */
 // TODO: ask Baxter why there are 2 blocks of comments on file heading
+#include "doubly_linked_list.h"
+#include "dll_node.h"
 #include <iostream>
 #include <ostream>
-#include "dll_node.h"
-#include "doubly_linked_list.h"
 
 extern void logToFileAndConsole(std::string msg);
 
@@ -29,7 +30,8 @@ DoublyLinkedList::DoublyLinkedList() {
   this->head = nullptr;
 } ///< Constructor: Initializes an empty list.
 DoublyLinkedList::~DoublyLinkedList() {
-  this->clear();
+  this->clear(); // I'not sure if I have to clear to properly destruct the list,
+                 // but I'm doing it just to be safe
 }; ///< Destructor: Deletes all nodes.
 
 // I'm personally not a fan of having to initialize stuff, but I'm just doing it
@@ -51,6 +53,18 @@ static DllNode *findNode(int key, DoublyLinkedList *list) {
 
   return currentNode;
 }
+
+// This is a helper function to deal with removing connections from a node.
+// WARNING: It does NOT delete the node
+static DllNode *softRemove(DllNode *targetNode) {
+  DllNode *prevNode, *nextNode;
+
+  prevNode = targetNode->prev;
+  nextNode = targetNode->next;
+
+  prevNode->next = nextNode;
+  nextNode->prev = prevNode;
+};
 
 bool DoublyLinkedList::isEmpty() {
   return (this->head == nullptr);
@@ -100,13 +114,7 @@ void DoublyLinkedList::remove(int key) {
     else if (targetNode == this->tail)
       removeTailNode();
     else {
-      DllNode *prevNode, *nextNode;
-
-      prevNode = targetNode->prev;
-      nextNode = targetNode->next;
-
-      prevNode->next = nextNode;
-      nextNode->prev = prevNode;
+      softRemove(targetNode);
 
       delete targetNode;
       targetNode = nullptr;
@@ -253,7 +261,7 @@ void DoublyLinkedList::clear() {
 void DoublyLinkedList::printList() {
   DllNode *currentNode = this->head;
 
-	logToFileAndConsole("Here are the List contents: ");
+  logToFileAndConsole("Here are the List contents: ");
 
   while (currentNode != nullptr) {
     currentNode->printNode();
@@ -261,18 +269,18 @@ void DoublyLinkedList::printList() {
   };
   // Pointers should hopefully end up as null pointers after loop
 
-	logToFileAndConsole("End of List");
+  logToFileAndConsole("End of List");
 }; ///< Prints the list from head to tail.
 
 void DoublyLinkedList::reversePrintList() {
   DllNode *currentNode = this->tail;
 
-	logToFileAndConsole("Here are the List contents: ");
+  logToFileAndConsole("Here are the List contents: ");
   while (currentNode != nullptr) {
     currentNode->printNode();
     currentNode = currentNode->prev;
   };
   // Pointers should hopefully end up as null pointers after loop
 
-	logToFileAndConsole("End of List");
+  logToFileAndConsole("End of List");
 }; ///< Prints the list from tail to head.
