@@ -118,7 +118,9 @@ void DoublyLinkedList::removeHeaderNode() {
   DllNode *currentHead = this->head;
   DllNode *newHead = currentHead->next;
   currentHead->next = nullptr;
-  newHead->prev = nullptr;
+
+  if (newHead != nullptr)
+    newHead->prev = nullptr; // Fixes bad access when the list is 1 element long
   delete currentHead;
 
   this->head = newHead;
@@ -128,7 +130,9 @@ void DoublyLinkedList::removeTailNode() {
   DllNode *currentTail = this->tail;
   DllNode *newTail = currentTail->prev;
   currentTail->prev = nullptr;
-  newTail->next = nullptr;
+
+  if (newTail != nullptr)
+    newTail->next = nullptr; // Fixes bad access when the list is 1 element long
   delete currentTail;
 
   this->tail = newTail;
