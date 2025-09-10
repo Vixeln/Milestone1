@@ -26,7 +26,7 @@ DoublyLinkedList::DoublyLinkedList() {
   this->head = nullptr;
 } ///< Constructor: Initializes an empty list.
 DoublyLinkedList::~DoublyLinkedList() {
-
+  this->clear();
 }; ///< Destructor: Deletes all nodes.
 
 // I'm personally not a fan of having to initialize stuff, but I'm just doing it
