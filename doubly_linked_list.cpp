@@ -88,7 +88,30 @@ newTail = new DllNode(key);
     initializeFirstNode(newTail, this);
 }; ///< Inserts a node at the tail.
 
-void DoublyLinkedList::remove(int key) {};         ///< Removes a node with a specific key.
+void DoublyLinkedList::remove(int key) {
+  DllNode *targetNode = findNode(key, this);
+
+  if (targetNode != nullptr) { // Potential circular list issue
+    if (targetNode == this->head)
+      removeHeaderNode();
+    else if (targetNode == this->tail)
+      removeTailNode();
+    else {
+      DllNode *prevNode, *nextNode;
+
+      prevNode = targetNode->prev;
+      nextNode = targetNode->next;
+
+      prevNode->next = nextNode;
+      nextNode->prev = prevNode;
+
+      delete targetNode;
+      targetNode = nullptr;
+    };
+  } else {
+    std::cout << "Could not remove node because it could not be found";
+  }
+}; ///< Removes a node with a specific key.
 
 void DoublyLinkedList::removeHeaderNode() {
   DllNode *currentHead = this->head;
