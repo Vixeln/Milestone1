@@ -212,7 +212,7 @@ void DoublyLinkedList::printList() {
 void DoublyLinkedList::reversePrintList() {
   DllNode *currentNode = this->tail;
 
-  std::cout << "Here are the List contents: " << std::endl;
+  std::cout << "Here are the List contents reversed: " << std::endl;
   while (currentNode != nullptr) {
     std::cout << "Node key: " << currentNode->key << std::endl;
     currentNode = currentNode->prev;
