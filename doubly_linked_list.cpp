@@ -109,7 +109,8 @@ void DoublyLinkedList::remove(int key) {
       targetNode = nullptr;
     };
   } else {
-    std::cout << "Could not remove node because it could not be found";
+    std::cout << "Could not remove node because it could not be found."
+              << std::endl;
   }
 }; ///< Removes a node with a specific key.
 
@@ -172,7 +173,8 @@ void DoublyLinkedList::moveNodeToHead(int key) {
       this->head = newHead;
     }
   } else {
-    std::cout << "Could not move node because it could not be found";
+    std::cout << "Could not move node because it could not be found"
+              << std::endl;
   }
 
   // Why are we taking in a key? does that mean we have to search for the node
@@ -217,7 +219,8 @@ void DoublyLinkedList::moveNodeToTail(int key) {
       this->tail = newTail;
     }
   } else {
-    std::cout << "Could not move node because it could not be found" << std::endl;
+    std::cout << "Could not move node because it could not be found"
+              << std::endl;
   }
 
   // Why are we taking in a key? does that mean we have to search for the node
