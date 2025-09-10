@@ -31,7 +31,10 @@ DoublyLinkedList::~DoublyLinkedList() {
 
 // I'm personally not a fan of having to initialize stuff, but I'm just doing it
 // for now
-static void initializeFirstNode() {}
+static void initializeFirstNode(DllNode *firstNode, DoublyLinkedList *list) {
+  list->head = firstNode;
+  list->tail = firstNode;
+}
 
 bool DoublyLinkedList::isEmpty() {
   return (this->head == nullptr);
