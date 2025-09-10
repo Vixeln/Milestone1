@@ -22,6 +22,8 @@
 #include <iostream>
 #include <ostream>
 
+extern void logToFileAndConsole(std::string msg);
+
 DoublyLinkedList::DoublyLinkedList() {
   this->tail = nullptr;
   this->head = nullptr;
@@ -251,25 +253,26 @@ void DoublyLinkedList::clear() {
 void DoublyLinkedList::printList() {
   DllNode *currentNode = this->head;
 
-  std::cout << "Here are the List contents: " << std::endl;
+	logToFileAndConsole("Here are the List contents: ");
+
   while (currentNode != nullptr) {
-    std::cout << "Node key: " << currentNode->key << std::endl;
+    currentNode->printNode();
     currentNode = currentNode->next;
   };
   // Pointers should hopefully end up as null pointers after loop
 
-  std::cout << "End of List" << std::endl;
+	logToFileAndConsole("End of List");
 }; ///< Prints the list from head to tail.
 
 void DoublyLinkedList::reversePrintList() {
   DllNode *currentNode = this->tail;
 
-  std::cout << "Here are the List contents reversed: " << std::endl;
+	logToFileAndConsole("Here are the List contents: ");
   while (currentNode != nullptr) {
-    std::cout << "Node key: " << currentNode->key << std::endl;
+    currentNode->printNode();
     currentNode = currentNode->prev;
   };
   // Pointers should hopefully end up as null pointers after loop
 
-  std::cout << "End of List" << std::endl;
+	logToFileAndConsole("End of List");
 }; ///< Prints the list from tail to head.
