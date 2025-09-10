@@ -10,8 +10,9 @@
  * @brief This file implements the functions in doubly_linked_list.h
  *
  * This file defines a basic doubly linked list and common operations like
- * insertion, deletion, and movement of nodes.
+ * insertion, removal, movement of nodes, and printing.
  *
+ * @date 09/09/2025 - Added file heading and empty implementations so that the progrma compiles
  * @date 09/09/2025 - Added implementations and file heading
  * @author Vireak Ny
  */
