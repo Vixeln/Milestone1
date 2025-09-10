@@ -180,8 +180,22 @@ void DoublyLinkedList::moveNodeToHead(int key) {
   // what if there are duplicate nodes?
 
 }; ///< Moves a node to the head.
-void DoublyLinkedList::moveNodeToTail(int key){}; ///< Moves a node to the tail.
-void DoublyLinkedList::clear(){};                 ///< Deletes all nodes.
+void DoublyLinkedList::moveNodeToTail(int key) {
+}; ///< Moves a node to the tail.
+void DoublyLinkedList::clear() {
+  DllNode *currentNode = this->head;
+  DllNode *nextNode;
+
+  while (currentNode != nullptr) {
+    nextNode = currentNode->next;
+    delete currentNode;
+    currentNode = nextNode;
+  }
+
+  this->head = nullptr;
+  this->tail = nullptr;
+}; ///< Deletes all nodes.
+
 void DoublyLinkedList::printList() {
   DllNode *currentNode = this->head;
 
