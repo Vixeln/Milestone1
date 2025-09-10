@@ -41,11 +41,21 @@ bool DoublyLinkedList::isEmpty() {
 }; ///< Checks if the list is empty.
 
 void DoublyLinkedList::insertAtHead(int key) {
-  DllNode *newHead = new DllNode(key);
-  newHead->next = this->head;
-  if (this->head != nullptr)
-    this->head->prev = newHead;
+// TODO Potentially some memory leaks or dangling pointers
+  DllNode *newHead, *oldHead;
+
+newHead = new DllNode(key);
+  oldHead = this->head;
+
+  if (!this->isEmpty()) {
+    // Connect old and new nodes
+    oldHead->prev = newHead;
+    newHead->next = oldHead;
+
+    // Update head. Must do this->head, do not use oldHead.
   this->head = newHead;
+} else
+    initializeFirstNode(newHead, this);
 }; ///< Inserts a node at the head.
 
 void DoublyLinkedList::insertAtTail(int key) {
