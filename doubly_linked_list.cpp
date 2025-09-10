@@ -1,6 +1,7 @@
 /**
  * @author - Vireak Ny
- * @file doubly_linked_list.cpp -  This file implements the functions in doubly_linked_list.h
+ * @file doubly_linked_list.cpp -  This file implements the functions in
+ * doubly_linked_list.h
  *
  */
 
@@ -54,10 +55,10 @@ bool DoublyLinkedList::isEmpty() {
 }; ///< Checks if the list is empty.
 
 void DoublyLinkedList::insertAtHead(int key) {
-// TODO Potentially some memory leaks or dangling pointers
+  // TODO Potentially some memory leaks or dangling pointers
   DllNode *newHead, *oldHead;
 
-newHead = new DllNode(key);
+  newHead = new DllNode(key);
   oldHead = this->head;
 
   if (!this->isEmpty()) {
@@ -66,15 +67,15 @@ newHead = new DllNode(key);
     newHead->next = oldHead;
 
     // Update head. Must do this->head, do not use oldHead.
-  this->head = newHead;
-} else
+    this->head = newHead;
+  } else
     initializeFirstNode(newHead, this);
 }; ///< Inserts a node at the head.
 
 void DoublyLinkedList::insertAtTail(int key) {
   DllNode *newTail, *oldTail;
 
-newTail = new DllNode(key);
+  newTail = new DllNode(key);
   oldTail = this->tail;
 
   if (!this->isEmpty()) {
@@ -83,8 +84,8 @@ newTail = new DllNode(key);
     newTail->prev = oldTail;
 
     // Update head. Must do this->tail, do not use oldTail.
-  this->tail = newTail;
-} else
+    this->tail = newTail;
+  } else
     initializeFirstNode(newTail, this);
 }; ///< Inserts a node at the tail.
 
@@ -116,7 +117,7 @@ void DoublyLinkedList::remove(int key) {
 
 void DoublyLinkedList::removeHeaderNode() {
   DllNode *currentHead = this->head;
-  DllNode *newHead = currentHead->next;
+  DllNode *newHead = currentHead->next; // Problematic if list is empty
   currentHead->next = nullptr;
 
   if (newHead != nullptr)
@@ -140,7 +141,7 @@ void DoublyLinkedList::removeTailNode() {
 }; ///< Removes the tail node.
 
 void DoublyLinkedList::moveNodeToHead(int key) {
-  // My apporach involves changing the connections of the target node instead of
+  // My approach involves changing the connections of the target node instead of
   // copying and deleting the target node. This is so that the node can still be
   // accessed by even after being moved so as to avoid invalid pointers
   DllNode *targetNode = findNode(key, this);
@@ -161,7 +162,7 @@ void DoublyLinkedList::moveNodeToHead(int key) {
       if (nextNode != nullptr)
         // If condiiton is just patch up code, will
         // find better solution later.
-      nextNode->prev = prevNode;
+        nextNode->prev = prevNode;
       if (targetNode == this->tail)
         this->tail = prevNode;
 
@@ -232,6 +233,7 @@ void DoublyLinkedList::moveNodeToTail(int key) {
   // what if there are duplicate nodes?
 
 }; ///< Moves a node to the tail.
+
 void DoublyLinkedList::clear() {
   DllNode *currentNode = this->head;
   DllNode *nextNode;
